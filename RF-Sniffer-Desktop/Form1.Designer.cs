@@ -43,14 +43,14 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 49);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 41);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(345, 322);
+            this.dataGridView1.Size = new System.Drawing.Size(343, 337);
             this.dataGridView1.TabIndex = 0;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(163, 23);
+            this.numericUpDown1.Location = new System.Drawing.Point(192, 15);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(95, 20);
             this.numericUpDown1.TabIndex = 1;
@@ -63,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(122, 25);
+            this.label1.Location = new System.Drawing.Point(153, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 2;
@@ -71,21 +71,21 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(21, 20);
+            this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 23);
+            this.button1.Size = new System.Drawing.Size(66, 23);
             this.button1.TabIndex = 3;
-            this.button1.Text = "open";
+            this.button1.Text = "open Port";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(69, 20);
+            this.button2.Location = new System.Drawing.Point(84, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 23);
+            this.button2.Size = new System.Drawing.Size(65, 23);
             this.button2.TabIndex = 4;
-            this.button2.Text = "close";
+            this.button2.Text = "close Port";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -95,11 +95,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(313, 15);
+            this.button3.Location = new System.Drawing.Point(296, 12);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(42, 23);
+            this.button3.Size = new System.Drawing.Size(59, 23);
             this.button3.TabIndex = 5;
-            this.button3.Text = "clear";
+            this.button3.Text = "clear All";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
