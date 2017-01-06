@@ -11,19 +11,21 @@ using System.Threading;
 using System.IO.Ports;
 
 
-namespace List_RCMDS
+namespace RF_Sniffer_Desktop
 {
     public partial class Form1 : Form
     {
         SerialPort port;
         Thread thSerial;
-        Dictionary<int, int> codes = new Dictionary<int, int>();
+        Dictionary<Tuple<int, int>, int> codes = new Dictionary<Tuple<int, int>, int>();
         bool newData = true;
+
         public Form1()
         {
             InitializeComponent();
 
             dataGridView1.Columns.Add("Code", "Code");
+            dataGridView1.Columns.Add("Protocol", "Protocol");
             dataGridView1.Columns.Add("CNT", "CNT");
 
         }
@@ -57,17 +59,23 @@ namespace List_RCMDS
                         { }
                         if (input != "")
                         {
-                            int offset = 4;
-                            List<object> ints = Tools.Strings.encode<int>(input, ';', ref offset);
-                            foreach(int c in ints)
+                            int offset = 0;
+                            List<object> messages = Tools.Strings.encode<string>(input, ';', ref offset);
+                            foreach (var message in messages)
                             {
-                                if (codes.ContainsKey(c))
-                                    codes[c]++;
-                                else
-                                    codes.Add(c, 1);
-                            }
-                            newData = true;
+                                offset = 0;
+                                List<object> ints = Tools.Strings.encode<int>(input, '/', ref offset);
+                                if (ints.Count == 2)
+                                {
+                                    var val = new Tuple<int, int>((int)ints.ElementAt(0), (int)ints.ElementAt(1));
+                                    if (codes.ContainsKey(val))
+                                        codes[val]++;
+                                    else
+                                        codes.Add(val, 1);
+                                    newData = true;
+                                }
 
+                            }
                         }
 
                     }
@@ -98,15 +106,20 @@ namespace List_RCMDS
 
                 for (int i = 0; i < codes.Count; i++)
                 {
-                    dataGridView1.Rows.Add(codes.Keys.ElementAt(i), codes.Values.ElementAt(i));
+                    dataGridView1.Rows.Add(codes.Keys.ElementAt(i).Item1, codes.Keys.ElementAt(i).Item2, codes.Values.ElementAt(i));
                 }
-                
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             timer1.Enabled = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            codes = new Dictionary<Tuple<int, int>, int>();
+            newData = true;
         }
     }
 }
